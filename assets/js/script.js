@@ -28,7 +28,7 @@ $(document).ready(function () {
     
   });
 
-  var today = dayjs().format("dddd, MMMM DD YYYY");
+  // var today = dayjs().format("dddd, MMMM DD YYYY");
   // var today = dayjs();
   var currentHour = dayjs().format('HH');
   timeBlock = document.querySelector("time-block");
@@ -64,18 +64,18 @@ $(document).ready(function () {
   $('#hour-17 .description').val(localStorage.getItem('hour-17'));
 
 // Adds current date and time to header
-  // function currentDateAndTime() {
-  //   //start timer
-  //   setInterval(function () {
-  //       const timeIs = dayjs().format('hh:mm:ss');
-  //        const today = dayjs();
-  //       $('#currentDay').text(today, timeIs);
-  //   }, 1000)
-  // };
-  // currentDateAndTime();
+  function currentDateAndTime() {
+    //start timer
+    setInterval(function () {
+        const timeIs = dayjs().format('hh:mm:ss');
+         const today = dayjs();
+        $('#currentDay').text(today, timeIs);
+    }, 1000)
+  };
+  currentDateAndTime();
 
-  let displayDate = document.getElementById("currentDay");
-  displayDate.innerHTML = today;
+  // let displayDate = document.getElementById("currentDay");
+  // displayDate.innerHTML = today;
 
 
 });
