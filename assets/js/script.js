@@ -126,6 +126,21 @@ $(document).ready(function () {
 
   // TODO: Add code to display the current date in the header of the page.
   
+  // currentTime = document.querySelector('#currentDay');
+
+  function currentDateAndTime() {
+    //start timer
+    setInterval(function () {
+        const timeIs = dayjs().format('hh:mm:ss');
+         const today = dayjs();
+        $('#currentDay').text(today, timeIs);
+    }, 1000)
+};
+currentDateAndTime();
+
+
+
+
 
 });
 
