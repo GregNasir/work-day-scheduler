@@ -13,7 +13,8 @@ $(document).ready(function () {
 
     // EVENT LISTENER
   // Event listener for saveBtn click
-  $('.saveBtn').on('click', function () {
+  $('.saveBtn').on('click', function (e) {
+    e.preventDefault();
     // get nearby values of the description in jQuery
     var events = $(this).siblings('.description').val();
     // get the id attribute of the parent div element
@@ -23,10 +24,16 @@ $(document).ready(function () {
     localStorage.setItem(currentHour, events);
   });
 
-  // saveBtnEl.addEventListener("click", function (e) {
-  //   e.preventDefault();
-  //   addPlans();
-  // });
+  clearBtn = document.querySelector("#clear-btn");
+
+  //clears local storage and high score pages
+  clearBtn.addEventListener("click",function(e) {
+    e.preventDefault();
+    $(".description").val("");
+    localStorage.clear();
+    
+  });
+
 
   
 
@@ -38,95 +45,47 @@ $(document).ready(function () {
   // current hour in 24-hour time?
   //
 
-  // function currentTime() {
-  //   //start timer
-  //   setInterval(function () {
-  //       const timeIs = dayjs().format('hh:mm:ss');
-        
-  //   }, 1000)
-  // };
-  // currentTime();
+  var today = dayjs();
+  var currentHour = dayjs().format('HH');
+  timeBlock = document.querySelector("time-block");
 
-  // function tasksTodayStored () {
-  //   var tasks = localStorage.getItem('Tasks');
-  //   if (tasks) {
-  //     tasks = JSON.parse(tasks);
-  //   } else {
-  //     tasks = [];
-  //   }
-  //   return tasks;
+  //Past, present, and future functionality -
+    //Compare timeblock time with current time to determine whether
+    //activity is in the past, present, or future 
+    $(".time-block").each(function() {
+      var timeBlock = $(this).attr("id").split("-")[1];
 
-  // }
+      if (currentHour == timeBlock) {
+          $(this).addClass("present");
+          $(this).children(".description").addClass("present");
+ 
+      } else if (currentHour < timeBlock) {
+          $(this).removeClass("present");
+          $(this).addClass("future");
+
+      } else if (currentHour > timeBlock) {
+          $(this).removeClass("future");
+          $(this).addClass("past");
+      }
+  });
+
+
 
   
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-
-  // var currentTime = moment().hours();
-
-  // var timeSpan = document.querySelector('.hour')
-
-  // $('#currentDay').text(currentTime.format('LLLL'));
-
-  // // Select the .time div 
-  // let times = $('.hour');
-  // // Use moment to get current time. Just time not date
-  // let currentTime = moment().hours();
-
-  // descriptionEl = document.querySelector(".description");
-
-  // // Grab the inputs
-  // let tasks = $('Tasks');
-
-
-
-  // function addTasks (n) {
-  //   var newEvent = userPlans();
-  //   newEvent.push(n);
-  //   localStorage.setItem("Tasks", JSON.stringify(newEvent));
-  // };
-
-  // descriptionEl = document.querySelector("col-8 col-md-10 description");
-
-  // function saveTasks () {
-  //   descriptionEL = localStorage.setItem('Tasks', JSON.stringify(tasks));
-  //   console.log(descriptionEL);
-  // }
-
-  // function printTasks () {
-
-  //   descriptionEl.empty();
-
-  //   var tasks = tasksTodayStored();
-
-  //   for (var i = 0; i < tasks.length; i += 1) {
-  //     var task = tasks[i];
-  //     var taskTime = dayjs(task.timeIs);
-
-      
-  //   }
-
-
-  // }
-
-  // saveTasks();
-  // printTasks();
-  // function saveTasks () {
-  //   var scoreNum = {
-  //       user: userInitials.value,
-  //       score: finalScore
-  //   }
-  //   addScore(scoreNum);
-  //   showScore();
-  // }
+  // Get item from local storage if any
+  $('#hour-9 .description').val(localStorage.getItem('hour-9'));
+  $('#hour-10 .description').val(localStorage.getItem('hour-10'));
+  $('#hour-11 .description').val(localStorage.getItem('hour-11'));
+  $('#hour-12 .description').val(localStorage.getItem('hour-12'));
+  $('#hour-13 .description').val(localStorage.getItem('hour-13'));
+  $('#hour-14 .description').val(localStorage.getItem('hour-14'));
+  $('#hour-15 .description').val(localStorage.getItem('hour-15'));
+  $('#hour-16 .description').val(localStorage.getItem('hour-16'));
+  $('#hour-17 .description').val(localStorage.getItem('hour-17'));
 
 
   // TODO: Add code to display the current date in the header of the page.
-  
-  // currentTime = document.querySelector('#currentDay');
 
   function currentDateAndTime() {
     //start timer
@@ -135,8 +94,8 @@ $(document).ready(function () {
          const today = dayjs();
         $('#currentDay').text(today, timeIs);
     }, 1000)
-};
-currentDateAndTime();
+  };
+  currentDateAndTime();
 
 
 
