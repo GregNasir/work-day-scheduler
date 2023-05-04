@@ -25,8 +25,10 @@ HTML, CSS and Javascript were used to produce this webpage. Creating its appeara
 # Usage 
 
 The Work Day Scheduler allows users to add planned events for the work. The planner will change color for the specific hours, whether its in the past. present or future"
-  
-  
+
+
+  <img width="723" alt="Screen Shot 2023-05-04 at 3 04 41 AM" src="https://user-images.githubusercontent.com/63434657/236134183-fec22066-c332-409d-9839-be1e449dee2c.png">
+
 
 # Credits
 
