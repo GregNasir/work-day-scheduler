@@ -52,10 +52,7 @@ $(document).ready(function () {
   });
 
 
-
-  
-
-  // Get item from local storage if any
+  // Get item from local storage if any added
   $('#hour-9 .description').val(localStorage.getItem('hour-9'));
   $('#hour-10 .description').val(localStorage.getItem('hour-10'));
   $('#hour-11 .description').val(localStorage.getItem('hour-11'));
@@ -66,9 +63,7 @@ $(document).ready(function () {
   $('#hour-16 .description').val(localStorage.getItem('hour-16'));
   $('#hour-17 .description').val(localStorage.getItem('hour-17'));
 
-
-  // TODO: Add code to display the current date in the header of the page.
-
+// Adds current date and time to header
   function currentDateAndTime() {
     //start timer
     setInterval(function () {
@@ -78,9 +73,6 @@ $(document).ready(function () {
     }, 1000)
   };
   currentDateAndTime();
-
-
-
 
 
 });
