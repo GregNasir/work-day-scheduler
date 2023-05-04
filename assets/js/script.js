@@ -75,7 +75,7 @@ $(document).ready(function () {
   currentDateAndTime();
 
   // let displayDate = document.getElementById("currentDay");
-  // displayDate.innerHTML = today;
+  // displayDate.innerHTML = today; //
 
 
 });
