@@ -1,7 +1,9 @@
 
 $(document).ready(function () {
+
   
-   const saveBtnEl = document.querySelector("saveBtn");
+  
+  //  const saveBtnEl = document.querySelector("saveBtn");
 
     // Event listenters to save and clear events
 
@@ -40,7 +42,6 @@ $(document).ready(function () {
       if (currentHour == timeBlock) {
           $(this).addClass("present");
           $(this).children(".description").addClass("present");
- 
       } else if (currentHour < timeBlock) {
           $(this).removeClass("present");
           $(this).addClass("future");
@@ -53,7 +54,7 @@ $(document).ready(function () {
 
 
   // Get item from local storage if any added
-  $('#hour-09 .description').val(localStorage.getItem('hour-9'));
+  $('#hour-09 .description').val(localStorage.getItem('hour-09'));
   $('#hour-10 .description').val(localStorage.getItem('hour-10'));
   $('#hour-11 .description').val(localStorage.getItem('hour-11'));
   $('#hour-12 .description').val(localStorage.getItem('hour-12'));
@@ -64,18 +65,40 @@ $(document).ready(function () {
   $('#hour-17 .description').val(localStorage.getItem('hour-17'));
 
 // Adds current date and time to header
-  function currentDateAndTime() {
-    //start timer
-    setInterval(function () {
-        const timeIs = dayjs().format('hh:mm:ss');
-         const today = dayjs();
-        $('#currentDay').text(today, timeIs);
-    }, 1000)
+
+function currentDateAndTime() {
+    
+
+  
+  setInterval(function () {
+      
+      const today = dayjs().format("dddd, MMMM DD YYYY");
+      $('#currentDay').text(today);
+
+
+  })
   };
-  currentDateAndTime();
+currentDateAndTime();
+
+  // function currentDateAndTime() {
+    
+
+  //   // start timer
+  //   setInterval(function () {
+  //       // const timeIs = dayjs().format('hh:mm:ss');
+  //       const today = dayjs();
+  //       $('#currentDay').text(today);
+
+
+  //   }, 1000)
+  //   };
+  // currentDateAndTime();
+  // $('#currentDay').text(dayjs().hour());
 
   // let displayDate = document.getElementById("currentDay");
   // displayDate.innerHTML = today; //
+
+  
 
 
 });
